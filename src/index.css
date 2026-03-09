@@ -1,0 +1,428 @@
+/* src/index.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body, sans-serif);
+  background: var(--color-background);
+  color: var(--color-foreground);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ── Navbar ── */
+.cfg-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--color-card);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(12px);
+}
+
+.cfg-navbar__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem var(--spacing-page);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.cfg-navbar__brand {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+}
+
+.cfg-navbar__links {
+  gap: 0.25rem;
+}
+
+.cfg-navbar__link {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--color-muted-foreground);
+  transition: all 0.2s;
+}
+
+.cfg-navbar__link:hover {
+  background: var(--color-muted);
+  color: var(--color-foreground);
+}
+
+.cfg-navbar__link--active {
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+
+/* ── Page ── */
+.cfg-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-section) var(--spacing-page);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-section);
+}
+
+.cfg-page--empty {
+  min-height: 60vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.cfg-page--empty h1 {
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  color: var(--color-primary);
+}
+
+/* ── Hero ── */
+.cfg-hero {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.cfg-hero__heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-foreground);
+  margin-bottom: 1rem;
+}
+
+.cfg-hero__sub {
+  font-size: 1.15rem;
+  color: var(--color-muted-foreground);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+/* ── Buttons ── */
+.cfg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cfg-btn--primary {
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+
+.cfg-btn--primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.cfg-btn--ghost {
+  background: transparent;
+  color: var(--color-foreground);
+  font-size: 1.25rem;
+  padding: 0.5rem;
+}
+
+.cfg-btn--ghost:hover {
+  background: var(--color-muted);
+}
+
+/* ── Section ── */
+.cfg-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cfg-section__heading {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+}
+
+.cfg-section__sub {
+  color: var(--color-muted-foreground);
+  font-size: 1rem;
+  margin-top: -0.5rem;
+}
+
+.cfg-section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ── Grid ── */
+.cfg-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.cfg-grid--3 {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.cfg-grid--4 {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+/* ── Card ── */
+.cfg-card {
+  background: var(--color-card);
+  color: var(--color-card-foreground);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--spacing-card);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cfg-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.cfg-card__icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.cfg-card__title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+
+.cfg-card__desc {
+  font-size: 0.9rem;
+  color: var(--color-muted-foreground);
+  line-height: 1.5;
+}
+
+/* Product card */
+.cfg-card--product {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.cfg-card__img-placeholder {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 700;
+  background: var(--color-muted);
+  color: var(--color-muted-foreground);
+}
+
+.cfg-card__body {
+  padding: var(--spacing-card);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.cfg-card__category {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+}
+
+.cfg-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.cfg-card__price {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-foreground);
+}
+
+.cfg-card__rating {
+  color: #f59e0b;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Stat card */
+.cfg-card--stat {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.cfg-card__stat-value {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.cfg-card__stat-label {
+  font-size: 0.85rem;
+  color: var(--color-muted-foreground);
+  font-weight: 500;
+}
+
+/* ── Filters / Chips ── */
+.cfg-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cfg-chip {
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-muted-foreground);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cfg-chip:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.cfg-chip--active {
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+  border-color: var(--color-primary);
+}
+
+.cfg-chip--active:hover {
+  color: var(--color-primary-foreground);
+}
+
+/* ── Banner ── */
+.cfg-banner {
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.cfg-banner--default {
+  background: var(--color-muted);
+  color: var(--color-muted-foreground);
+}
+
+.cfg-banner--accent {
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+}
+
+/* ── Profile ── */
+.cfg-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  padding: 2rem;
+}
+
+.cfg-profile__avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.cfg-profile__name {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.cfg-profile__email {
+  color: var(--color-muted-foreground);
+  font-size: 0.9rem;
+}
+
+.cfg-profile__bio {
+  max-width: 500px;
+  color: var(--color-muted-foreground);
+  font-size: 0.95rem;
+}
+
+.cfg-profile__joined {
+  font-size: 0.8rem;
+  color: var(--color-muted-foreground);
+  background: var(--color-muted);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .cfg-navbar__inner {
+    padding: 0.5rem 1rem;
+  }
+
+  .cfg-navbar__link {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .cfg-grid--4 {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
